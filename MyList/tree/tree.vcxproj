@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{1db64ab0-542f-4492-b453-58716d3051f8}</ProjectGuid>
-    <RootNamespace>MyList</RootNamespace>
+    <ProjectGuid>{d1ab8501-9658-4978-9e8b-377fe2832029}</ProjectGuid>
+    <RootNamespace>tree</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -124,13 +124,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MyList.cpp" />
-    <ClCompile Include="MyList_test.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="func.h" />
-    <ClInclude Include="MyList.h" />
-    <ClInclude Include="MyList_test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

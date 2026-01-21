@@ -1,62 +1,59 @@
-#include "MyList.h"
-
-//разделять лог. блоки "" и <>
-
+#include "MyList_test.h"
 #include <iostream> 
 
-void MyList::InsNode(const std::string& str)
+void MyList_test::InsNode(const int& oth)
 {
-	if (pHead==nullptr)
+	if (pHead == nullptr)
 	{
-		pHead = new Node(str);
+		pHead = new Node_test(oth);
 		pTail = pHead;
 		cnt++;
 
 		return;
 	}
-	
+
 	//меньше влож.
-	pTail->pNext = new Node(str);
+	pTail->pNext = new Node_test(oth);
 	pTail = pTail->pNext;
 	cnt++;
-	
+
 
 }
 
-void MyList::InsNode(const std::string& str, size_t pos)
+void MyList_test::InsNode(const int& oth, size_t pos)
 {
-	if (pos==0)
+	if (pos == 0)
 	{
-		Node* pNewHead = new Node(str);
+		Node_test* pNewHead = new Node_test(oth);
 		pNewHead->pNext = this->pHead;
 		pHead = pNewHead;
 		cnt++;
 		return;
-		
+
 	}
-	else if(pos>cnt) //хвост
+	else if (pos > cnt) //хвост
 	{
-		InsNode(str);
+		InsNode(oth);
 		return;
 	}
 
-	Node* pCurrent = pHead;
+	Node_test* pCurrent = pHead;
 	for (size_t i = 0; i < pos; i++)
 	{
 		pCurrent = pCurrent->pNext;
 	}
 
-	Node* pNodeTmp = new Node(str);
+	Node_test* pNodeTmp = new Node_test(oth);
 	pNodeTmp->pNext = pCurrent->pNext->pNext;
 	pCurrent->pNext = pNodeTmp;
 }
 
-bool MyList::RemNode(size_t pos)
+bool MyList_test::RemNode(size_t pos)
 {
 	if (pos > cnt)  return false;
 
 	if (pos == 0) {
-		Node* pNodeTodl = pHead;
+		Node_test* pNodeTodl = pHead;
 		pHead = pHead->pNext;
 		delete pNodeTodl;
 		cnt--;
@@ -64,12 +61,12 @@ bool MyList::RemNode(size_t pos)
 		return true;
 	}
 
-	Node* pCurrent = pHead;
+	Node_test* pCurrent = pHead;
 	for (size_t i = 0; i < pos; i++)
 	{
 		pCurrent = pCurrent->pNext;
 	}
-	Node* pNodeTodl = pCurrent->pNext;
+	Node_test* pNodeTodl = pCurrent->pNext;
 	pCurrent->pNext = pCurrent->pNext->pNext;
 
 	delete pNodeTodl;
@@ -77,29 +74,29 @@ bool MyList::RemNode(size_t pos)
 	return true;
 }
 
-bool MyList::RemNode(const std::string& str)
+bool MyList_test::RemNode(const int& oth)
 {
-	
-	Node* pCurrent = pHead;
+
+	Node_test* pCurrent = pHead;
 
 
-	while (pCurrent->pNext!=nullptr&&pCurrent->pNext->val!=str)
+	while (pCurrent->pNext != nullptr && pCurrent->pNext->val != oth)
 	{
 		pCurrent = pCurrent->pNext;
 	}
 
 	if (pCurrent == pHead) {
-		Node* pNodeTodl = pHead;
+		Node_test* pNodeTodl = pHead;
 		pHead = pHead->pNext;
 		delete pNodeTodl;
 		cnt--;
 		if (cnt == 0) pTail = nullptr;
 		return true;
 	}
-	
+
 	if (pCurrent->pNext == nullptr) return false;
 
-	Node* pNodeTodl = pCurrent->pNext;
+	Node_test* pNodeTodl = pCurrent->pNext;
 	pCurrent->pNext = pCurrent->pNext->pNext;
 
 	delete pNodeTodl;
@@ -107,15 +104,16 @@ bool MyList::RemNode(const std::string& str)
 	return true;
 }
 
-void MyList::PrintList() const
+void MyList_test::PrintList() const
 {
 	std::cout << this->cnt << std::endl;
-	for (Node* pCur=pHead; pCur!= nullptr; pCur=pCur->pNext)
+	for (Node_test* pCur = pHead; pCur != nullptr; pCur = pCur->pNext)
 	{
-		std::cout << pCur->val<< std::endl;
+		std::cout << pCur->val << std::endl;
 	}
 }
 
-MyList::~MyList()
+MyList_test::~MyList_test()
 {
 }
+
