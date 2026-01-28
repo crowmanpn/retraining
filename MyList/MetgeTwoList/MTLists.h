@@ -10,16 +10,27 @@ struct ListNode {
  
 };
 
-class Solution {
-public:
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
 
-		
-		for (ListNode* pCur=list1; pCur!=nullptr;pCur=pCur->next)
-		{
-			std::cout << pCur->val << std::endl;
-		}
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2)
+	{
+		//проходим по обоим спискам
+                ListNode* tmp = new ListNode();
+                ListNode* curr = tmp;
+                while (list1 && list2) {
+                    if (list1->val <= list2->val) {
+                        curr->next = list1;
+                        list1 = list1->next;
+                    }
+                    else {
+                        curr->next = list2;
+                        list2 = list2->next;
+                    }
+                    curr = curr->next;
+                }
 
-		return nullptr;
+                //дозаполняем...
+
+                 curr->next = list1 ? list1 : list2;
+                return tmp->next;
+      
     }
-};

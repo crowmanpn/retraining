@@ -3,27 +3,41 @@
 
 int main() {
 	//list 1
-	ListNode ln1(1);
-	ListNode ln2(2);
-	ListNode ln3(3);
-	ListNode ln4(4);
+	ListNode* head1 = new ListNode(1);
+	ListNode* curr = head1;
+	for (size_t i = 2; i < 5; i++)
+	{
+		curr->next = new ListNode(i);
+		curr = curr->next;
 
-	ln1.next = &ln2;
-	ln2.next = &ln3;
-	ln3.next = &ln4;
-	//--------------
+	}
+	
 	//list 2
-	ListNode ln21(10);
-	ListNode ln22(20);
-	ListNode ln23(30);
-	ListNode ln24(40);
+	ListNode* head2 = new ListNode(3);
+	curr = head2;
 
-	ln21.next = &ln22;
-	ln22.next = &ln23;
-	ln23.next = &ln24;
+	for (size_t i = 4; i < 8; i++)
+	{
+		curr->next = new ListNode(i);
+		curr = curr->next;
+	}
 
-	Solution mySol;
-	mySol.mergeTwoLists(&ln1, &ln21);
+	ListNode* test=mergeTwoLists(head1,head2);
+	
+	while (head1)
+	{
+		ListNode* tmp = head1;
+		head1 = head1->next;
+		delete tmp;
+	}
+
+	while (head2)
+	{
+		ListNode* tmp = head2;
+		head2 = head2->next;
+		delete tmp;
+	}
+	//просмотреть два списка в одном цикле 
 
 
 	return 0;
