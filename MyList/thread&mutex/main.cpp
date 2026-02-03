@@ -5,7 +5,7 @@
 //#include <stack>
 #include <thread>
 #include <mutex>
-#include<ctime>
+#include <ctime>
 #include <random>
 
 std::mutex mtxMoney;
