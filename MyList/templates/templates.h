@@ -15,8 +15,12 @@ public:
 		m_cap = 0;
 	}
 
+	~MyArray() {
+		delete[] m_data;
+	}
+
 	MyArray(size_t size) {
-		m_date = new T[size];
+		m_data = new T[size];
 		m_cap = size;
 		m_size = size;
 	}
@@ -25,17 +29,21 @@ public:
 
 	}  //кк
 
+	MyArray(const MyArray&& oth) {
+
+	}
+
 	MyArray& operator=(const MyArray& oth) {
 
 	}
 
-	bool operator==(const MyArray& lhs, const MyArray& rhs) {
+	/*bool operator==(const MyArray& lhs, const MyArray& rhs) {
+		return true;
+	}*/
 
-	}
+	/*T& operator[](size_t index);*/	 //Как отслеживать выход из массива - assert (макрос в режиме debug).
 
-	T& operator[](size_t index);	 //Как отслеживать выход из массива - assert (макрос в режиме debug).
-
-	const T& operator[](size_t index);
+	/*const T& operator[](size_t index);*/
 
 	
 
