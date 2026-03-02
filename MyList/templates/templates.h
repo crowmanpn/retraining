@@ -57,6 +57,7 @@ public:
 	}  //кк
 
 	MyArray(MyArray&& oth) {
+		//≈сли будем перемещать пустой динамический массив?
 		m_size = oth.m_size;
 		m_cap = oth.m_cap;
 		m_data = oth.m_data;
@@ -64,19 +65,73 @@ public:
 		oth.m_size = 0;
 		oth.m_cap = 0;
 		oth.m_data = nullptr;
+	 }
 
+	MyArray& operator=(const MyArray& oth) { //ќптимизированный оператор присваивани€?
+		if (this != &oth) //«ащита от присваивани€ на себ€ самого.
+		{
+			if (m_cap == oth.m_cap) //ѕросто перезаписываем
+			{
+				for (size_t i = 0; i < oth.m_size; i++)
+				{
+					m_data[i] = oth.m_data[i];
+				}
+			}
+			else if (m_cap < oth.m_cap)
+			{
+				ClearMyArray();
+				m_data = new T[oth.m_cap];
+				m_cap = oth.m_cap;
+				m_size = oth.m_size;
+				for (size_t i = 0; i < oth.m_size; i++)
+				{
+					m_data[i] = oth.m_data[i];
+				}
+			}
+			else
+			{
+				m_size = oth.m_size;
+				for (size_t i = 0; i < m_size; i++)
+				{
+					m_data[i] = oth.m_data[i];
+				}
+			}
+
+		}
+		return *this;
 	}
 
-	MyArray& operator=(const MyArray& oth) {
+	MyArray& operator=(const MyArray&& oth) {
+		if (this != &oth) {	//защита от перемещени€ самого себ€
+			ClearMyArray(); //удалили
+			//отобрали
+			m_size = oth.m_size;
+			m_cap = oth.m_cap;
+			m_data = oth.m_data;
 
+			//обнулили
+			oth.size = 0;
+			oth.m_cap = 0;
+			m_data = nullptr;
+			
+
+		}
+		return *this;
 	}
 
 	void ShowMyArray() {
 		for (size_t i = 0; i < m_size; i++)
 		{
-			std::cout << m_data[i] << std::endl;
+			std::cout << m_data[i] << " ";
 		}
+		std::cout << std::endl;
 	}
+
+	void ClearMyArray() {
+		delete[] m_data;
+		m_size = 0;
+		m_data = 0;
+	}				
 
 	/*bool operator==(const MyArray& lhs, const MyArray& rhs) {
 		return true;

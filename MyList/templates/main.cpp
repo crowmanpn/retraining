@@ -1,6 +1,7 @@
 #include <iostream>
 #include "templates.h"
 #include <string>
+#include <vector>
 
 
 
@@ -10,14 +11,25 @@ int main() {
 	MyArray<int> myArray2={1,2,3,4,5,6,7,8,9,10};
 
 	MyArray<std::string> myArray3={ "hello","world" };
-	myArray3.ShowMyArray();
+	//myArray3.ShowMyArray();
 	
 	//MyArray<int> myArray4(myArray2);
 	//Проверим мув семантику
 
 	MyArray<int> myArray4(std::move(myArray2));
 
+	MyArray<int> myArray5{ 4,6,7,10,12,22,33 };
 	
+	myArray5 = myArray4;
+	myArray5.ShowMyArray();
+
+	MyArray<int> MyArray6={ 9,10,11 };
+	myArray5 = MyArray6;
+	myArray5.ShowMyArray();
+	
+	
+
+
 
 	return 0;
 }
