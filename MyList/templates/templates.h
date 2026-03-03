@@ -3,7 +3,7 @@
 #include <initializer_list>
 #include <iostream>
 
-
+const size_t AddCap = 5;
 
 template <typename T>
 class MyArray {
@@ -33,7 +33,7 @@ public:
 	////можно ли делать new и delete?
 	MyArray(std::initializer_list<T> init) :m_size(init.size()) {
 		//вспомнил список инициализации std::initializer_list
-		m_cap = m_size + 5;
+		m_cap = m_size + AddCap;
 		m_data = new T[m_cap];
 
 		size_t i = 0;
@@ -131,7 +131,30 @@ public:
 		delete[] m_data;
 		m_size = 0;
 		m_data = 0;
-	}				
+	}
+
+	void PushBack(const T& oth) {
+		
+		if (m_size<m_cap)
+		{
+			m_data[m_size] = oth;
+			m_size++;
+		}
+		else
+		{
+		 //если объема не хватает - перераспределяем память.
+			T* tmp_data = new T[m_cap+AddCap];
+			for (size_t i = 0; i < m_size; i++)
+			{
+				tmp_data[i] = m_data[i];
+			}
+			tmp_data[m_size] = oth;
+			m_size++;
+			m_cap +=AddCap;
+			delete[] m_data;
+			m_data = tmp_data;
+		}
+	}
 
 	/*bool operator==(const MyArray& lhs, const MyArray& rhs) {
 		return true;
@@ -140,11 +163,7 @@ public:
 	/*T& operator[](size_t index);*/	 //Как отслеживать выход из массива - assert (макрос в режиме debug).
 
 	/*const T& operator[](size_t index);*/
-
-	
-
-
-	
+		
 	//оператор присваивания
 	//оператор сравнения==
 	//оператор [] (const и не const версия)
@@ -152,8 +171,5 @@ public:
 	// clear
 	// Деструктор (delete)
 	//
-
-
-
 
 };

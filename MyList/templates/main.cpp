@@ -26,9 +26,24 @@ int main() {
 	MyArray<int> MyArray6={ 9,10,11 };
 	myArray5 = MyArray6;
 	myArray5.ShowMyArray();
-	
-	
 
+	//std::vector<int> myVec;
+
+	myArray5.PushBack(777);
+	myArray5.ShowMyArray();
+
+	MyArray<int> MyArray7{ 55,66,77};
+
+
+	MyArray7.PushBack(88);
+	MyArray7.PushBack(89);
+	MyArray7.PushBack(100);
+	MyArray7.PushBack(101);
+	MyArray7.PushBack(102);
+	MyArray7.PushBack(103);
+	MyArray7.PushBack(777);
+	
+	MyArray7.ShowMyArray();
 
 
 	return 0;
