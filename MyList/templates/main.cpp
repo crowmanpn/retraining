@@ -20,6 +20,8 @@ int main() {
 
 	MyArray<int> myArray5{ 4,6,7,10,12,22,33 };
 	
+	
+
 	myArray5 = myArray4;
 	myArray5.ShowMyArray();
 
@@ -27,13 +29,14 @@ int main() {
 	myArray5 = MyArray6;
 	myArray5.ShowMyArray();
 
-	//std::vector<int> myVec;
+	std::vector<int> myVec;
+	
 
 	myArray5.PushBack(777);
 	myArray5.ShowMyArray();
 
 	MyArray<int> MyArray7{ 55,66,77};
-
+	MyArray7.ShowMyArray();
 
 	MyArray7.PushBack(88);
 	MyArray7.PushBack(89);
@@ -44,6 +47,15 @@ int main() {
 	MyArray7.PushBack(777);
 	
 	MyArray7.ShowMyArray();
+
+	MyArray<int> MyArray8(MyArray7);
+
+	if (MyArray8==MyArray7)
+	{
+		std::cout << "true" << std::endl;
+	}
+	
+
 
 
 	return 0;

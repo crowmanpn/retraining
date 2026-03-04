@@ -30,9 +30,11 @@ size_t GetSize(const T& oth)
 //template <typename T>
 //size_t GetSize(const T& oth) {
 //	if constexpr (requires {oth.size();}) {
+//		std::cout << "size()" << std::endl;
 //		return oth.size(); // Приоритет для типов с .size()
 //	}
 //	else {
+//		std::cout << "sizeof()" << std::endl;
 //		return sizeof(oth); // Резервный вариант
 //	}
 //}

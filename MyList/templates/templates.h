@@ -12,7 +12,7 @@ private:
 	size_t m_size;
 	size_t m_cap;
 
-public:
+public: //инициализ единообразно
 	MyArray() {
 		m_data = nullptr;
 		m_size = 0;
@@ -23,7 +23,7 @@ public:
 		delete[] m_data;
 	}
 
-	MyArray(size_t size) {
+	MyArray(size_t size) {//единообразно
 		m_data = new T[size];
 		m_cap = size;
 		m_size = size;
@@ -31,20 +31,26 @@ public:
 	//template <typename... args> //а если мы сделаем constexpr метод, то его можно вычислить на этапе
 	////компиляции?
 	////можно ли делать new и delete?
-	MyArray(std::initializer_list<T> init) :m_size(init.size()) {
+	MyArray(std::initializer_list<T> init) :m_size(init.size()),m_cap(m_size) {
 		//вспомнил список инициализации std::initializer_list
-		m_cap = m_size + AddCap;
-		m_data = new T[m_cap];
+		m_data = new T[m_size];
 
 		size_t i = 0;
-		for (auto& x : init) {
+		for (const auto& x : init) { //не меняется
 			m_data[i] = x;	//почему выдает предупреждения?
 			i++;
 		}
+		//Лучше бы классический фор
+		
+
+
 		//вспомнил диапазонный фор
 	}
 
+
+
 	MyArray(const MyArray& oth) {
+
 		m_size = oth.m_size;
 		m_cap = oth.m_cap;
 		m_data = new T[m_cap];
@@ -96,9 +102,12 @@ public:
 					m_data[i] = oth.m_data[i];
 				}
 			}
+			//перегрузка для простых типов с использ std::memcpy
 
 		}
 		return *this;
+
+		//просто из аргумента берем данные
 	}
 
 	MyArray& operator=(const MyArray&& oth) {
@@ -143,26 +152,35 @@ public:
 		else
 		{
 		 //если объема не хватает - перераспределяем память.
-			T* tmp_data = new T[m_cap+AddCap];
+			T* tmp_data = new T[m_size+1];
 			for (size_t i = 0; i < m_size; i++)
 			{
 				tmp_data[i] = m_data[i];
 			}
 			tmp_data[m_size] = oth;
-			m_size++;
-			m_cap +=AddCap;
+			m_cap = ++m_size;
 			delete[] m_data;
 			m_data = tmp_data;
 		}
 	}
 
-	/*bool operator==(const MyArray& lhs, const MyArray& rhs) {
+	bool operator==(const MyArray& oth) {
+		if ((m_size!=oth.m_size)||(m_cap != oth.m_cap)) return false;
+			for (size_t i = 0; i < m_size; i++)
+			{
+				if(m_data[i]!=oth.m_data[i]) return false;
+			}
 		return true;
-	}*/
+	}
 
-	/*T& operator[](size_t index);*/	 //Как отслеживать выход из массива - assert (макрос в режиме debug).
+	T& operator[](size_t index) {
+		return m_data[index];
+	}
+	//Как отслеживать выход из массива - assert (макрос в режиме debug).
 
-	/*const T& operator[](size_t index);*/
+	const T& operator[](size_t index) {
+		return m_data[index];
+	}
 		
 	//оператор присваивания
 	//оператор сравнения==
