@@ -25,6 +25,7 @@ public:
 	bool RemNode(size_t pos);
 	bool RemNode(const int& oth);
 	void PrintList() const; //почитать про static
+	
 
 
 	~MyList_test();

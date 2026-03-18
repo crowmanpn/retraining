@@ -27,6 +27,7 @@ public:
 	bool RemNode(const std::string& str); 
 	void PrintList() const; //почитать про static
 	
+	
 
 	~MyList();
 
