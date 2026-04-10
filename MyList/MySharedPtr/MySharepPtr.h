@@ -1,5 +1,6 @@
 #pragma once
 #include <atomic>
+#include <iostream>
 
 template <typename T> 
 class MySharedPtr {
@@ -13,7 +14,7 @@ public:
 		if (m_counter == nullptr) {
 			return;
 		}
-		*m_counter--;
+		(*m_counter)--;
 		if (*m_counter == 0) {
 			delete m_data;
 			delete m_counter;
@@ -31,10 +32,18 @@ public:
 		m_counter = oth.m_counter;
 		if (m_counter!=nullptr)
 		{
-			*m_counter++;
+			(*m_counter)++;
+			std::cout << "ref: " << *m_counter << std::endl;
 		}	
 	}
+	T& operator*() const{
 
+		return *m_data;
+	}
+
+	T* GetData() const{	//
+		return m_data;
+	}
 private:
 	MySharedPtr(T* oth) {
 		m_counter = new std::atomic<size_t>(1);
