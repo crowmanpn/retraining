@@ -1,6 +1,7 @@
 #include <unordered_map>
 #include <vector>
 #include <iostream>
+#include <limits>
 struct myPair {
 	int m_cnt;  //
 	int m_index;//i
@@ -70,15 +71,19 @@ int main() {
 	auto test=mySol.containsNearbyDuplicate(myVec,3);
 
 	int x=120;
-	int res = 0;
+	long long res = 0;
 	
-	
+	if (x<INT_MIN || x>INT_MAX) {
+		return 0;
+	}
+	else{
 	while (x != 0) {
 		int tmp;
 		tmp = x % 10;
 		x /= 10;
 		res = res * 10 + tmp;
 		
+	}
 	}
 	//посмотреть переполнение 1534236469.
 

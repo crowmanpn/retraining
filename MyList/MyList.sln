@@ -33,6 +33,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "28_03_2026", "28_03_2026\28
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Leet_code_task_217", "Leet_code_task_217\Leet_code_task_217.vcxproj", "{72744D3B-48C8-4EBC-BCF2-38259296C75D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OOP", "OOP\OOP.vcxproj", "{989BF6BE-095D-46F4-9003-C4849940C8F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -161,6 +163,14 @@ Global
 		{72744D3B-48C8-4EBC-BCF2-38259296C75D}.Release|x64.Build.0 = Release|x64
 		{72744D3B-48C8-4EBC-BCF2-38259296C75D}.Release|x86.ActiveCfg = Release|Win32
 		{72744D3B-48C8-4EBC-BCF2-38259296C75D}.Release|x86.Build.0 = Release|Win32
+		{989BF6BE-095D-46F4-9003-C4849940C8F9}.Debug|x64.ActiveCfg = Debug|x64
+		{989BF6BE-095D-46F4-9003-C4849940C8F9}.Debug|x64.Build.0 = Debug|x64
+		{989BF6BE-095D-46F4-9003-C4849940C8F9}.Debug|x86.ActiveCfg = Debug|Win32
+		{989BF6BE-095D-46F4-9003-C4849940C8F9}.Debug|x86.Build.0 = Debug|Win32
+		{989BF6BE-095D-46F4-9003-C4849940C8F9}.Release|x64.ActiveCfg = Release|x64
+		{989BF6BE-095D-46F4-9003-C4849940C8F9}.Release|x64.Build.0 = Release|x64
+		{989BF6BE-095D-46F4-9003-C4849940C8F9}.Release|x86.ActiveCfg = Release|Win32
+		{989BF6BE-095D-46F4-9003-C4849940C8F9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
