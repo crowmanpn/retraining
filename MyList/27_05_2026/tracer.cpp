@@ -43,9 +43,36 @@ void Tracer::printAll()
 	}
 }
 
-void Tracer::binSearch(const Trace& oth)
+int Tracer::binSearch(const Trace& oth)
 {
-si
+   //пока не найдем эл-т
+ //границы равные (эл-т не нашли)
+	size_t ileft = 0;
+	size_t iright = m_data.size() - 1;
+
+	
+	while (ileft!=iright)
+	{
+		size_t mid = ((iright - ileft) / 2) + ileft;
+		if (m_data[mid].m_time == oth.m_time)
+		{
+			return mid;
+		}
+		if (oth.m_time<m_data[mid].m_time)
+		{
+			iright = mid;
+		}
+		else
+		{
+			ileft = mid;
+		}
+	}
+	if (m_data[ileft].m_time == oth.m_time)
+	{
+		return ileft;
+	}
+	
+	return -1;
 }
 
 
@@ -54,7 +81,7 @@ si
 
 //классические сортировки без сорт
 
-std::string logLvlToStr(LevelLog mylog)
+std::string Tracer::logLvlToStr(LevelLog mylog)
 {
 	switch (mylog)
 	{
@@ -66,4 +93,9 @@ std::string logLvlToStr(LevelLog mylog)
 			return "info";
 	}
 	return "";
+}
+
+Tracer::Trace Tracer::GetTrace(size_t i)
+{
+	return m_data[i];
 }
